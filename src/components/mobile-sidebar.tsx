@@ -10,14 +10,15 @@ export const MobileSidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Sheet modal={false} open={isOpen} onOpenChange={setIsOpen}>
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
-        <Button variant="secondary" className="lg:hidden">
+        <Button variant="secondary" size="icon" className="lg:hidden">
           <MenuIcon className="size-5 text-neutral-500" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="p-0">
-        <Sidebar />
+
+      <SheetContent side="left" className="p-0 w-[320px]">
+        <Sidebar isMobile />
       </SheetContent>
     </Sheet>
   );

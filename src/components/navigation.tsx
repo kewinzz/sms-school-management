@@ -23,7 +23,7 @@ const Navigation = () => {
                   "bg-blue-500 text-white shadow-sm hover-opacity-100",
               )}
             >
-              <Icon className={cn("size-5", isActive && "text-white")} />
+              <Icon className={cn("size-5 shrink-0", isActive && "text-white")} />
               {item.label}
             </div>
           </Link>
