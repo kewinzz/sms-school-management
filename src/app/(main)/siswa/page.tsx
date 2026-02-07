@@ -1,9 +1,10 @@
-import React from 'react'
+import { SiswaView } from "@/features/siswa/views/siswa-views";
 
 const SiswaPage = () => {
+ 
   return (
-    <div>SiswaPage</div>
-  )
-}
+     <SiswaView/>
+  );
+};
 
-export default SiswaPage
+export default SiswaPage;
