@@ -1,12 +1,7 @@
-import { BigCalendar } from '@/features/calendars/components/big-calendar'
+import { CalendarView } from "@/features/calendars/views/calendar-views";
 
 const CalendarPage = () => {
+  return <CalendarView />;
+};
 
-  return (
-    <div>
-      <BigCalendar />
-    </div>
-  )
-}
-
-export default CalendarPage
+export default CalendarPage;

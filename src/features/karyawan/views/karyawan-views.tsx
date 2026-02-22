@@ -1,71 +1,85 @@
 "use client";
 
-import { columns, SiswaData } from "@/components/columns";
+import { karyawanColumns, KaryawanData } from "@/components/karyawan-columns";
 import { DataTable } from "@/components/data-table";
 import { Button } from "@/components/ui/button";
-import { Plus, Search, Download, Filter, Users } from "lucide-react";
+import { Plus, Search, Download, Filter, UserCog, Users, Clock } from "lucide-react";
 import React from "react";
 
-export const SiswaView = () => {
-  const data: SiswaData[] = [
+export const KaryawanView = () => {
+  const data: KaryawanData[] = [
     {
-      id: "1",
+      id: "EMP001",
+      name: "Dr. Siti Aminah",
+      email: "siti.aminah@school.com",
+      phone: "081234567890",
+      position: "Principal",
+      department: "Administration",
+      status: "active",
+      joinDate: "2020-01-15",
+    },
+    {
+      id: "EMP002",
+      name: "Budi Santoso, S.Pd",
+      email: "budi.santoso@school.com",
+      phone: "081234567891",
+      position: "Mathematics Teacher",
+      department: "Academic",
+      status: "active",
+      joinDate: "2021-03-20",
+    },
+    {
+      id: "EMP003",
+      name: "Dewi Lestari, S.Pd",
+      email: "dewi.lestari@school.com",
+      phone: "081234567892",
+      position: "English Teacher",
+      department: "Academic",
+      status: "on-leave",
+      joinDate: "2021-08-10",
+    },
+    {
+      id: "EMP004",
       name: "Ahmad Rizki",
       email: "ahmad.rizki@school.com",
-      phone: "081234567890",
-      status: "active",
-      joinDate: "2024-01-15",
-    },
-    {
-      id: "2",
-      name: "Siti Nurhaliza",
-      email: "siti.nurhaliza@school.com",
-      phone: "081234567891",
-      status: "active",
-      joinDate: "2024-02-20",
-    },
-    {
-      id: "3",
-      name: "Budi Santoso",
-      email: "budi.santoso@school.com",
-      phone: "081234567892",
-      status: "inactive",
-      joinDate: "2023-11-10",
-    },
-    {
-      id: "4",
-      name: "Dewi Lestari",
-      email: "dewi.lestari@school.com",
       phone: "081234567893",
+      position: "IT Administrator",
+      department: "IT Support",
       status: "active",
-      joinDate: "2024-03-05",
+      joinDate: "2022-02-05",
     },
     {
-      id: "5",
-      name: "Roni Hermawan",
-      email: "roni.hermawan@school.com",
+      id: "EMP005",
+      name: "Rina Wijaya",
+      email: "rina.wijaya@school.com",
       phone: "081234567894",
+      position: "Finance Officer",
+      department: "Finance",
       status: "active",
-      joinDate: "2024-01-25",
+      joinDate: "2022-06-15",
     },
   ];
 
+  const activeCount = data.filter((emp) => emp.status === "active").length;
+  const onLeaveCount = data.filter((emp) => emp.status === "on-leave").length;
+  const inactiveCount = data.filter((emp) => emp.status === "inactive").length;
+
   return (
-    <div className="w-full min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-50">
-      <div className="max-w-7xl mx-auto p-6 space-y-6">
+    <div className="w-full min-h-screen bg-gradient-to-br from-slate-50 via-purple-50/30 to-slate-50">
+      <div className="max-w-3xl mx-auto p-6 space-y-6">
         {/* Header Section */}
         <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div className="flex items-center gap-4">
-              <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/30">
-                <Users className="h-6 w-6 text-white" />
+              <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center shadow-lg shadow-purple-500/30">
+                <UserCog className="h-6 w-6 text-white" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-slate-900">
-                  Student Management
+                  Staff Management
                 </h1>
                 <p className="text-sm text-slate-600 mt-1">
-                  Manage and view all student information
+                  Manage and view all staff information
                 </p>
               </div>
             </div>
@@ -80,10 +94,10 @@ export const SiswaView = () => {
               </Button>
               <Button
                 size="sm"
-                className="h-10 px-4 rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-lg shadow-blue-500/30 transition-all"
+                className="h-10 px-4 rounded-lg bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 shadow-lg shadow-purple-500/30 transition-all"
               >
                 <Plus className="h-4 w-4 mr-2" />
-                Add Student
+                Add Staff
               </Button>
             </div>
           </div>
@@ -94,21 +108,19 @@ export const SiswaView = () => {
           <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 hover:shadow-md transition-shadow">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-slate-600">Total Students</p>
+                <p className="text-sm font-medium text-slate-600">Total Staff</p>
                 <p className="text-2xl font-bold text-slate-900 mt-1">{data.length}</p>
               </div>
-              <div className="h-12 w-12 rounded-lg bg-blue-100 flex items-center justify-center">
-                <Users className="h-6 w-6 text-blue-600" />
+              <div className="h-12 w-12 rounded-lg bg-purple-100 flex items-center justify-center">
+                <Users className="h-6 w-6 text-purple-600" />
               </div>
             </div>
           </div>
           <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 hover:shadow-md transition-shadow">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-slate-600">Active Students</p>
-                <p className="text-2xl font-bold text-slate-900 mt-1">
-                  {data.filter((s) => s.status === "active").length}
-                </p>
+                <p className="text-sm font-medium text-slate-600">Active Staff</p>
+                <p className="text-2xl font-bold text-slate-900 mt-1">{activeCount}</p>
               </div>
               <div className="h-12 w-12 rounded-lg bg-green-100 flex items-center justify-center">
                 <div className="h-3 w-3 rounded-full bg-green-500"></div>
@@ -118,13 +130,11 @@ export const SiswaView = () => {
           <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 hover:shadow-md transition-shadow">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-slate-600">Inactive Students</p>
-                <p className="text-2xl font-bold text-slate-900 mt-1">
-                  {data.filter((s) => s.status === "inactive").length}
-                </p>
+                <p className="text-sm font-medium text-slate-600">On Leave</p>
+                <p className="text-2xl font-bold text-slate-900 mt-1">{onLeaveCount}</p>
               </div>
-              <div className="h-12 w-12 rounded-lg bg-slate-100 flex items-center justify-center">
-                <div className="h-3 w-3 rounded-full bg-slate-500"></div>
+              <div className="h-12 w-12 rounded-lg bg-orange-100 flex items-center justify-center">
+                <Clock className="h-6 w-6 text-orange-600" />
               </div>
             </div>
           </div>
@@ -137,8 +147,8 @@ export const SiswaView = () => {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
               <input
                 type="text"
-                placeholder="Search students by name, email, or phone..."
-                className="w-full h-10 pl-10 pr-4 rounded-lg border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all text-sm"
+                placeholder="Search staff by name, position, or department..."
+                className="w-full h-10 pl-10 pr-4 rounded-lg border border-slate-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 outline-none transition-all text-sm"
               />
             </div>
             <Button
@@ -153,7 +163,7 @@ export const SiswaView = () => {
         </div>
 
         {/* Data Table */}
-        <DataTable data={data} columns={columns} />
+        <DataTable data={data} columns={karyawanColumns} />
       </div>
     </div>
   );
